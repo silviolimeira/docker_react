@@ -48,3 +48,6 @@ Usando o docker-compose.yml:
 $ docker-compose up -d --build
 
 $ docker-compose down
+
+Multiple Stages Build:
+docker build --target build -f Dockerfile.prod -t multi-stage-example .
