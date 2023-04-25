@@ -1,0 +1,36 @@
+
+Create an React app:
+$ npx create-react-app .
+
+Start the app
+$ npm start 
+
+Removendo imagem:
+$ docker image rm ID_IMAGE
+
+Criando a imagem:
+$ docker build -f Dockerfile.dev -t react-image .
+
+Executando a imagem com bind mounts:
+$ docker run -v $(pwd)/src:/app/src:ro -d -p 3000:3000 --name react-app react-image 
+$ docker run -e CHOKIDAR_USEPOLLING=true -v $(pwd)/src:/app/src:ro -d -p 3000:3000 --name react-app react-image 
+
+$ docker run -e CHOKIDAR_USEPOLLING=true -v $(pwd)/src:/app/src:ro -e REACT_APP_NAME=Cesar -d -p 3000:3000 --name react-app react-image 
+
+$ docker run --env-file ./.env -v $(pwd)/src:/app/src:ro -d -p 3000:3000 --name react-app react-image 
+
+$ docker run -it --env-file ./.env -v $(pwd)/src:/app/src:ro -d -p 3000:3000 --name react-app react-image 
+
+$ docker ps
+
+Removendo container:
+$ docker rm react-app -f
+
+Access the bash of the docker container:
+$ docker exec -it react-app bash
+
+
+Usando o docker-compose.yml:
+$ docker-compose up -d --build
+
+$ docker-compose down
